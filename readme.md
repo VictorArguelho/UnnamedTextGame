@@ -31,7 +31,7 @@ File → Open Folder → UnnamedTextGame
 
 2. Abra o arquivo `Program.cs`
 
-3. Pressione **F5** ou vá em:
+3. Pressione **F5**:
 
 ## Autor
 
