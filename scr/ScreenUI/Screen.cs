@@ -4,6 +4,9 @@ public static class Screen
 {
     public const ConsoleColor DEFAULT_COLOR = ConsoleColor.White;
 
+    public static void BreakLine() =>
+        Console.Write("\n");
+
     public static void Print(
         string text, 
         ConsoleColor color = DEFAULT_COLOR
