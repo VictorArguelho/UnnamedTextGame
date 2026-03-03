@@ -9,7 +9,7 @@ namespace Game
         {
             Console.BackgroundColor = ConsoleColor.DarkGray;
             Console.Clear();
-            Screen.SetTextColor();
+            OldScreen.SetTextColor();
 
             var game = new Core.Game();
             game.Run();

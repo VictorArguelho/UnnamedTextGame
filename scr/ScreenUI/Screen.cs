@@ -2,7 +2,7 @@ using System.Drawing;
 
 namespace Game.ScreenUI;
 
-public static class Screen
+public static class OldScreen
 {
     public const ConsoleColor DEFAULT_COLOR = ConsoleColor.Gray;
 

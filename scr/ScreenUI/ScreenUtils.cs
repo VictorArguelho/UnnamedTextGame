@@ -7,7 +7,7 @@ public static class ScreenUtils
         ConsoleColor color = ConsoleColor.Gray
     )
     {
-        Screen.Print(
+        OldScreen.Print(
             new(
                 chr, 
                 Console.WindowWidth
@@ -18,14 +18,14 @@ public static class ScreenUtils
 
     public static void AskOptions(
         IReadOnlyList<Option> options,
-        ConsoleColor color = Screen.DEFAULT_COLOR,
+        ConsoleColor color = OldScreen.DEFAULT_COLOR,
         ConsoleColor reAskColor = ConsoleColor.DarkRed
     )
     {
-        Screen.PrintLine("Escolha uma das opções (digite o número dela): ", color);
-        Screen.BreakLine();
+        OldScreen.PrintLine("Escolha uma das opções (digite o número dela): ", color);
+        OldScreen.BreakLine();
         PrintOptions(options);
-        Screen.BreakLine();
+        OldScreen.BreakLine();
         var op = GetOption(options, reAskColor);
         options[op].Action();
     }
@@ -35,7 +35,7 @@ public static class ScreenUtils
         for(int i = 0; i < options.Count; i++)
         {
             var op = options[i];
-            Screen.PrintLine(
+            OldScreen.PrintLine(
                 $"{i + 1}.{op.Text}", 
                 op.Color
             );
@@ -49,14 +49,14 @@ public static class ScreenUtils
     {
         int opNum = -1;
         string opText = string.Empty;
-        opText = Screen.GetInputAfterPrint("Opção escolhida: ");
+        opText = OldScreen.GetInputAfterPrint("Opção escolhida: ");
 
         while (
             !int.TryParse(opText, out opNum) ||
             opNum < 1 ||
             opNum > options.Count
         )
-            opText = Screen.GetInputAfterPrint("Opção inválida, escolha novamente: ", reAskColor);
+            opText = OldScreen.GetInputAfterPrint("Opção inválida, escolha novamente: ", reAskColor);
             
         return opNum - 1;
     }
