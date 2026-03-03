@@ -16,10 +16,17 @@ public static class ScreenUtils
         );
     }
 
-    public static void AskOptions(IReadOnlyList<Option> options)
+    public static void AskOptions(
+        IReadOnlyList<Option> options,
+        ConsoleColor color = Screen.DEFAULT_COLOR,
+        ConsoleColor reAskColor = ConsoleColor.Red
+    )
     {
+        Screen.PrintLine("Escolha uma das opções (digite o número dela): ", color);
+        Screen.BreakLine();
         PrintOptions(options);
-        var op = GetOption(options);
+        Screen.BreakLine();
+        var op = GetOption(options, reAskColor);
         options[op].Action();
     }
 
@@ -35,18 +42,21 @@ public static class ScreenUtils
         }
     }
 
-    private static int GetOption(IReadOnlyList<Option> options)
+    private static int GetOption(
+        IReadOnlyList<Option> options,
+        ConsoleColor reAskColor
+    )
     {
         int opNum = -1;
         string opText = string.Empty;
-        opText = Screen.GetInputAfterPrint("Escolha uma opcao: ");
+        opText = Screen.GetInputAfterPrint("Opção escolhida: ");
 
         while (
             !int.TryParse(opText, out opNum) ||
             opNum < 1 ||
             opNum > options.Count
         )
-            opText = Screen.GetInputAfterPrint("Escolha uma opcao valida: ");
+            opText = Screen.GetInputAfterPrint("Opção inválida, escolha novamente: ", reAskColor);
             
         return opNum - 1;
     }
