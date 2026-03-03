@@ -8,8 +8,8 @@ public class Playground
     {
         ScreenUtils.PrintHeader('=', ConsoleColor.Red);
         ScreenUtils.AskOptions([
-            new("a", () => Console.WriteLine("a")),
-            new("b", () => Console.WriteLine("b"))
+            new("Opcao A", () => Console.WriteLine("Voce escolheu a opcao A")),
+            new("Opcao B", () => Console.WriteLine("Voce escolheu a opcao B"))
         ]);
     }
 }
