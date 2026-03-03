@@ -13,7 +13,7 @@ Um jogo de texto (ainda sem nome e sem tema) feito em C# que roda no terminal.
 Clone o repositório:
 
 ```bash
-git clone https://github.com/VictorArguelho/UnnamedTextGame.git
+git clone https://github.com/VictorArguelho/UnnamedTextGame
 ```
 
 Entre na pasta do projeto:
