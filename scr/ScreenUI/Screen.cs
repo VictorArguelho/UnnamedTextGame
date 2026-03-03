@@ -2,9 +2,11 @@ namespace Game.ScreenUI;
 
 public static class Screen
 {
+    public const ConsoleColor DEFAULT_COLOR = ConsoleColor.White;
+
     public static void Print(
         string text, 
-        ConsoleColor color = ConsoleColor.White
+        ConsoleColor color = DEFAULT_COLOR
     ) =>
         ExecuteWithColor(
             () => Console.Write(text), 
@@ -13,7 +15,7 @@ public static class Screen
 
     public static void PrintLine(
         string text, 
-        ConsoleColor color = ConsoleColor.White
+        ConsoleColor color = DEFAULT_COLOR
     ) =>
         ExecuteWithColor(
             () => Console.WriteLine(text), 
@@ -25,7 +27,7 @@ public static class Screen
 
     public static string GetInputAfterPrint(
         string text,
-        ConsoleColor color = ConsoleColor.White
+        ConsoleColor color = DEFAULT_COLOR
     )
     {
         Print(text, color);
@@ -34,7 +36,7 @@ public static class Screen
 
     public static string GetInputAfterPrintLine(
         string text,
-        ConsoleColor color = ConsoleColor.White
+        ConsoleColor color = DEFAULT_COLOR
     )
     {
         PrintLine(text, color);
@@ -43,7 +45,7 @@ public static class Screen
 
     private static void ExecuteWithColor(
         Action action, 
-        ConsoleColor color
+        ConsoleColor color = DEFAULT_COLOR
     )
     {
         var previousColor = Console.ForegroundColor;
