@@ -1,5 +1,3 @@
-using System.Drawing;
-
 namespace Game.ScreenUI;
 
 public static class OldScreen
