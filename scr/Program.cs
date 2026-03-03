@@ -1,4 +1,5 @@
 ﻿using Game.Dev;
+using Game.ScreenUI;
 
 namespace Game
 {
@@ -6,6 +7,10 @@ namespace Game
     {
         public static void Main(string[] args)
         {
+            Console.BackgroundColor = ConsoleColor.DarkGray;
+            Console.Clear();
+            Screen.SetTextColor();
+
             var game = new Core.Game();
             game.Run();
 

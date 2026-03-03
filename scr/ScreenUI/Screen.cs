@@ -1,8 +1,13 @@
+using System.Drawing;
+
 namespace Game.ScreenUI;
 
 public static class Screen
 {
-    public const ConsoleColor DEFAULT_COLOR = ConsoleColor.White;
+    public const ConsoleColor DEFAULT_COLOR = ConsoleColor.Gray;
+
+    public static void SetTextColor(ConsoleColor color = DEFAULT_COLOR) =>
+        Console.ForegroundColor = color;
 
     public static void BreakLine() =>
         Console.Write("\n");

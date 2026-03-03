@@ -3,7 +3,7 @@ namespace Game.ScreenUI;
 public readonly struct Option(
     string text,
     Action action,
-    ConsoleColor color = ConsoleColor.White
+    ConsoleColor color = Screen.DEFAULT_COLOR
 )
 {
     public readonly string Text { get; } = text;

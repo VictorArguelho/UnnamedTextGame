@@ -4,7 +4,7 @@ public static class ScreenUtils
 {
     public static void PrintHeader(
         char chr, 
-        ConsoleColor color = ConsoleColor.White
+        ConsoleColor color = ConsoleColor.Gray
     )
     {
         Screen.Print(
@@ -19,7 +19,7 @@ public static class ScreenUtils
     public static void AskOptions(
         IReadOnlyList<Option> options,
         ConsoleColor color = Screen.DEFAULT_COLOR,
-        ConsoleColor reAskColor = ConsoleColor.Red
+        ConsoleColor reAskColor = ConsoleColor.DarkRed
     )
     {
         Screen.PrintLine("Escolha uma das opções (digite o número dela): ", color);
