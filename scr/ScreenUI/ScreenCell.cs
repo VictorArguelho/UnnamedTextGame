@@ -4,7 +4,7 @@ public struct ScreenCell(
     char chr,
     ConsoleColor chrColor,
     ConsoleColor backgroundColor
-)
+) : IEquatable<ScreenCell>
 {
     private char _chr = chr;
     private ConsoleColor _chrColor = chrColor;
@@ -50,4 +50,15 @@ public struct ScreenCell(
             Dirty = true;
         }
     }
+
+        public readonly bool Equals(ScreenCell other) =>
+            Chr.Equals(other.Chr) &&
+            ChrColor.Equals(other.ChrColor) &&
+            BackgroundColor.Equals(other.BackgroundColor);
+
+        public override bool Equals(object? obj) =>
+            obj is ScreenCell other && Equals(other);
+
+        public override int GetHashCode() =>
+            HashCode.Combine(Chr, ChrColor, BackgroundColor);
 }
