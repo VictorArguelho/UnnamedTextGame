@@ -7,13 +7,13 @@ namespace Game.ScreenUI
         private readonly static HashSet<Vector2Int> _dirtyCells = [];
         private static ScreenCell[,]? _buffer = null;
         private static bool _needsFullRender = false;
-        private static int _width;
-        private static int _height;
+        public static int Width { get; private set; }
+        public static int Height { get; private set; }
 
         public static void ResizeBuffer(int width, int height)
         {
-            _width = width;
-            _height = height;
+            Width = width;
+            Height = height;
             _buffer = new ScreenCell[width, height];
             ClearBuffer();
         }
@@ -92,8 +92,8 @@ namespace Game.ScreenUI
             if(_buffer == null)
                 throw new InvalidOperationException("Buffer não inicializado");
 
-            for(int x = 0; x < _width; x++)
-                for(int y = 0; y < _height; y++)
+            for(int x = 0; x < Width; x++)
+                for(int y = 0; y < Height; y++)
                     _buffer[x, y] = new();
         }
 
@@ -102,8 +102,8 @@ namespace Game.ScreenUI
             if (_buffer == null)
                 throw new InvalidOperationException("Buffer não inicializado");
 
-            if (position.X < 0 || position.X >= _width ||
-                position.Y < 0 || position.Y >= _height
+            if (position.X < 0 || position.X >= Width ||
+                position.Y < 0 || position.Y >= Height
             )
                 throw new ArgumentOutOfRangeException(nameof(position));
 
@@ -115,10 +115,10 @@ namespace Game.ScreenUI
             if(_buffer == null)
                 throw new InvalidOperationException("Buffer não inicializado");
 
-            var dirtyCells = new DirtyScreenCell[_width, _height];
+            var dirtyCells = new DirtyScreenCell[Width, Height];
 
-                for(int x = 0; x < _width; x++)
-                    for(int y = 0; y < _height; y++)
+                for(int x = 0; x < Width; x++)
+                    for(int y = 0; y < Height; y++)
                         dirtyCells[x, y] = new(
                                 _buffer[x, y],
                                 new(x, y)
