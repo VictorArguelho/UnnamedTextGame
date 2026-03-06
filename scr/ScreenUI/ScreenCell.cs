@@ -6,59 +6,44 @@ public struct ScreenCell(
     ConsoleColor backgroundColor = ConsoleColor.Black
 ) : IEquatable<ScreenCell>
 {
-    private char _chr = chr;
-    private ConsoleColor _chrColor = chrColor;
-    private ConsoleColor _backgroundColor = backgroundColor;
+    public char Chr { get; private set; } = chr;
+    public ConsoleColor ChrColor { get; private set; } = chrColor;
+    public ConsoleColor BackgroundColor { get; private set; } = backgroundColor;
 
-    public bool Dirty { get; internal set; } = false;
-    
-    public char Chr
+    public bool SetCell(    
+        char chr = ' ',
+        ConsoleColor chrColor = ConsoleColor.White,
+        ConsoleColor backgroundColor = ConsoleColor.Black
+    )
     {
-        readonly get => _chr;
+        Chr = chr;
+        ChrColor = chrColor;
+        BackgroundColor = backgroundColor;
 
-        set
-        {
-            if (value == _chr)
-                return;
-            _chr = value;
-            Dirty = true;
-        }
+        return 
+            Chr != chr || 
+            ChrColor != chrColor || 
+            BackgroundColor != backgroundColor;
     }
 
-    public ConsoleColor ChrColor
+    public static bool operator ==(ScreenCell left, ScreenCell right)
     {
-        readonly get => _chrColor;
-
-        set
-        {
-            if (value == _chrColor)
-                return;
-            _chrColor = value;
-            Dirty = true;
-        }
+        return left.Equals(right);
     }
 
-    public ConsoleColor BackgroundColor
+    public static bool operator !=(ScreenCell left, ScreenCell right)
     {
-        readonly get => _backgroundColor;
-
-        set
-        {
-            if (value == _backgroundColor)
-                return;
-            _backgroundColor = value;
-            Dirty = true;
-        }
+        return !(left == right);
     }
 
-        public readonly bool Equals(ScreenCell other) =>
-            Chr.Equals(other.Chr) &&
-            ChrColor.Equals(other.ChrColor) &&
-            BackgroundColor.Equals(other.BackgroundColor);
+    public readonly bool Equals(ScreenCell other) =>
+        Chr.Equals(other.Chr) &&
+        ChrColor.Equals(other.ChrColor) &&
+        BackgroundColor.Equals(other.BackgroundColor);
 
-        public override bool Equals(object? obj) =>
-            obj is ScreenCell other && Equals(other);
+    public override readonly bool Equals(object? obj) =>
+        obj is ScreenCell other && Equals(other);
 
-        public override int GetHashCode() =>
-            HashCode.Combine(Chr, ChrColor, BackgroundColor);
+    public override readonly int GetHashCode() =>
+        HashCode.Combine(Chr, ChrColor, BackgroundColor);
 }
