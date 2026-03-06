@@ -1,9 +1,9 @@
 namespace Game.ScreenUI;
 
 public struct ScreenCell(
-    char chr,
-    ConsoleColor chrColor,
-    ConsoleColor backgroundColor
+    char chr = ' ',
+    ConsoleColor chrColor = ConsoleColor.White,
+    ConsoleColor backgroundColor = ConsoleColor.Black
 ) : IEquatable<ScreenCell>
 {
     private char _chr = chr;
