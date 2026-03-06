@@ -16,14 +16,16 @@ public struct ScreenCell(
         ConsoleColor backgroundColor = ConsoleColor.Black
     )
     {
+        var isChanged = 
+            Chr != chr || 
+            ChrColor != chrColor || 
+            BackgroundColor != backgroundColor;
+
         Chr = chr;
         ChrColor = chrColor;
         BackgroundColor = backgroundColor;
 
-        return 
-            Chr != chr || 
-            ChrColor != chrColor || 
-            BackgroundColor != backgroundColor;
+        return isChanged; 
     }
 
     public static bool operator ==(ScreenCell left, ScreenCell right)
