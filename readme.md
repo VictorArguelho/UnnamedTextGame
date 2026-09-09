@@ -2,6 +2,10 @@
 
 Um jogo de texto (ainda sem nome e sem tema) feito em C# que roda no terminal.
 
+## Desenvolvimento
+
+Na branch feature/screen-buffer está sendo desenvolvido um sistema que gerencia o console de execução do código, permitindo manipulações da tela muito maiores que as padrões da linguagem, como de por exemplo colorir certa célula do console de uma certa cor. Todo o sistema é baseado em alterar propriedades de cada célula de forma direta.
+
 ## Requisitos
 
 - .NET SDK 11.0 instalado
